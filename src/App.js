@@ -519,7 +519,7 @@
 
 
 //final
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -535,9 +535,15 @@ import {
   Paper,
   TextField,
   IconButton,
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemText,
+  Divider,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import MenuIcon from '@mui/icons-material/Menu';
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { grey } from "@mui/material/colors";
@@ -567,42 +573,82 @@ const theme = createTheme({
 });
 
 // -------------------- NAVBAR --------------------
-const Navbar = () => (
-  <AppBar
-    position="fixed"
-    sx={{
-      backgroundColor: "rgba(255,255,255,0.95)",
-      backdropFilter: "blur(12px)",
-      boxShadow: "0 3px 20px rgba(0,0,0,0.08)",
-      color: theme.palette.secondary.main,
-    }}
-  >
-    <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 8 } }}>
-      <Typography
-        variant="h6"
-        sx={{ fontWeight: 800, letterSpacing: "-0.3px", color: theme.palette.primary.main }}
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  const links = ["Home", "Services", "Clients", "Gallery", "Testimonials", "Contact"];
+
+  return (
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: "rgba(255,255,255,0.95)",
+          backdropFilter: "blur(12px)",
+          boxShadow: "0 3px 20px rgba(0,0,0,0.08)",
+          color: theme.palette.secondary.main,
+        }}
       >
-        Orbit Power Engineering
-      </Typography>
-      <Box>
-        {["Home", "Services", "Clients", "Gallery", "Testimonials", "Contact"].map((item) => (
-          <Button
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            sx={{
-              color: theme.palette.secondary.main,
-              fontWeight: 500,
-              mx: 1.5,
-              "&:hover": { color: theme.palette.primary.main },
-            }}
+        <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 8 } }}>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: 800, letterSpacing: "-0.3px", color: theme.palette.primary.main }}
           >
-            {item}
-          </Button>
-        ))}
-      </Box>
-    </Toolbar>
-  </AppBar>
-);
+            Orbit Power Engineering
+          </Typography>
+
+          {/* Desktop links */}
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            {links.map((item) => (
+              <Button
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                sx={{
+                  color: theme.palette.secondary.main,
+                  fontWeight: 500,
+                  mx: 1.5,
+                  "&:hover": { color: theme.palette.primary.main },
+                }}
+              >
+                {item}
+              </Button>
+            ))}
+          </Box>
+
+          {/* Mobile hamburger */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setOpen(true)}
+            >
+              <MenuIcon sx={{ color: theme.palette.secondary.main }} />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      {/* Drawer for mobile */}
+      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+        <Box sx={{ width: 260 }} role="presentation" onClick={() => setOpen(false)} onKeyDown={() => setOpen(false)}>
+          <List>
+            <ListItemButton component="a" href="#home">
+              <ListItemText primary="Orbit Power Engineering" />
+            </ListItemButton>
+          </List>
+          <Divider />
+          <List>
+            {links.map((item) => (
+              <ListItemButton key={item} component="a" href={`#${item.toLowerCase()}`}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
+    </>
+  );
+};
 
 // -------------------- HERO --------------------
 const Hero = () => (
