@@ -106,7 +106,7 @@ const Services = () => {
   const sliderRef = useRef(null);
   const services = [
     {
-      img: "https://images.unsplash.com/photo-1581091012184-5c50b6b0668c",
+      img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
       title: "Design Engineering",
       desc: "Innovative electrical, civil, and mechanical design services for modern infrastructure.",
     },
@@ -116,12 +116,12 @@ const Services = () => {
       desc: "Safe, efficient, and quality-driven construction for industrial and commercial projects.",
     },
     {
-      img: "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
+      img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
       title: "Procurement & Supply",
       desc: "Reliable sourcing and delivery of global engineering and power products.",
     },
     {
-      img: "https://images.unsplash.com/photo-1581091870627-3f03d3b5dc13",
+      img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
       title: "Commissioning & Maintenance",
       desc: "End-to-end lifecycle support for optimal asset performance.",
     },
@@ -207,11 +207,11 @@ const Services = () => {
 const Gallery = () => {
   const sliderRef = useRef(null);
   const images = [
-    "https://images.unsplash.com/photo-1581091012184-5c50b6b0668c",
     "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
-    "https://images.unsplash.com/photo-1518770660439-4636190af475",
-    "https://images.unsplash.com/photo-1505739773434-c0a0f4b7d6ea",
+    "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
+    "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+    "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
   ];
 
   const settings = {
@@ -278,68 +278,160 @@ const Gallery = () => {
   );
 };
 
-const Contact = () => (
-  <Box
-    id="contact"
-    sx={{
-      py: 10,
-      background: "linear-gradient(135deg, #E8F5E9, #F5F5F5)",
-    }}
-  >
-    <Container>
-      <Typography variant="h4" align="center" color="secondary" gutterBottom>
-        Contact Us
-      </Typography>
-      <Typography align="center" sx={{ mb: 4, color: grey[700] }}>
-        We'd love to hear from you! Send us a message and our team will get back shortly.
-      </Typography>
+// const Contact = () => (
+//   <Box
+//     id="contact"
+//     sx={{
+//       py: 10,
+//       background: "linear-gradient(135deg, #E8F5E9, #F5F5F5)",
+//     }}
+//   >
+//     <Container>
+//       <Typography variant="h4" align="center" color="secondary" gutterBottom>
+//         Contact Us
+//       </Typography>
+//       <Typography align="center" sx={{ mb: 4, color: grey[700] }}>
+//         We'd love to hear from you! Send us a message and our team will get back shortly.
+//       </Typography>
 
+//       <Paper
+//         elevation={4}
+//         sx={{
+//           p: 5,
+//           borderRadius: 4,
+//           maxWidth: 700,
+//           mx: "auto",
+//           background: "white",
+//           boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+//         }}
+//       >
+//         <Grid container spacing={3}>
+//           <Grid item xs={12} sm={6}>
+//             <TextField label="Name" variant="outlined" fullWidth />
+//           </Grid>
+//           <Grid item xs={12} sm={6}>
+//             <TextField label="Email" variant="outlined" fullWidth />
+//           </Grid>
+//           <Grid item xs={12}>
+//             <TextField label="Subject" variant="outlined" fullWidth />
+//           </Grid>
+//           <Grid item xs={12}>
+//             <TextField label="Message" multiline rows={4} variant="outlined" fullWidth />
+//           </Grid>
+//           <Grid item xs={12} textAlign="center">
+//             <Button
+//               variant="contained"
+//               color="primary"
+//               size="large"
+//               sx={{
+//                 borderRadius: 3,
+//                 px: 5,
+//                 py: 1.5,
+//                 textTransform: "none",
+//                 fontSize: "1rem",
+//                 fontWeight: 600,
+//               }}
+//             >
+//               Send Message
+//             </Button>
+//           </Grid>
+//         </Grid>
+//       </Paper>
+//     </Container>
+//   </Box>
+// );
+
+
+const Contact = () => {
+  return (
+    <Container sx={{ py: 10 }}>
       <Paper
-        elevation={4}
+        elevation={6}
         sx={{
-          p: 5,
+          p: 6,
           borderRadius: 4,
-          maxWidth: 700,
-          mx: "auto",
-          background: "white",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+          background: "linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%)",
+          boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
         }}
       >
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <TextField label="Name" variant="outlined" fullWidth />
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          textAlign="center"
+          gutterBottom
+          color="#1B5E20"
+        >
+          Get in Touch
+        </Typography>
+
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+          <Grid item xs={12} md={6}>
+            <TextField
+              label="Full Name"
+              fullWidth
+              variant="outlined"
+              sx={{ background: "white", borderRadius: 2 }}
+            />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField label="Email" variant="outlined" fullWidth />
+
+          <Grid item xs={12} md={6}>
+            <TextField
+              label="Email Address"
+              fullWidth
+              variant="outlined"
+              sx={{ background: "white", borderRadius: 2 }}
+            />
           </Grid>
+
+          <Grid item xs={12} md={6}>
+            <TextField
+              label="Phone Number"
+              fullWidth
+              variant="outlined"
+              sx={{ background: "white", borderRadius: 2 }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <TextField
+              label="Company Name"
+              fullWidth
+              variant="outlined"
+              sx={{ background: "white", borderRadius: 2 }}
+            />
+          </Grid>
+
           <Grid item xs={12}>
-            <TextField label="Subject" variant="outlined" fullWidth />
+            <TextField
+              label="Message"
+              multiline
+              rows={4}
+              fullWidth
+              variant="outlined"
+              sx={{ background: "white", borderRadius: 2 }}
+            />
           </Grid>
-          <Grid item xs={12}>
-            <TextField label="Message" multiline rows={4} variant="outlined" fullWidth />
-          </Grid>
+
           <Grid item xs={12} textAlign="center">
             <Button
               variant="contained"
-              color="primary"
               size="large"
               sx={{
-                borderRadius: 3,
-                px: 5,
+                px: 6,
                 py: 1.5,
-                textTransform: "none",
-                fontSize: "1rem",
-                fontWeight: 600,
+                backgroundColor: "#1B5E20",
+                "&:hover": { backgroundColor: "#2E7D32" },
+                borderRadius: 3,
               }}
             >
-              Send Message
+              Submit Message
             </Button>
           </Grid>
         </Grid>
       </Paper>
     </Container>
-  </Box>
-);
+  );
+};
 
 const Footer = () => (
   <Box sx={{ bgcolor: "#102A43", color: "white", textAlign: "center", py: 3 }}>
