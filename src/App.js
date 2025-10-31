@@ -1,524 +1,3 @@
-// import React, { useRef } from "react";
-// import {
-//   AppBar,
-//   Toolbar,
-//   Typography,
-//   Button,
-//   Box,
-//   CssBaseline,
-//   Container,
-//   Card,
-//   CardMedia,
-//   CardContent,
-//   Grid,
-//   Paper,
-//   TextField,
-//   IconButton,
-// } from "@mui/material";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-// import Slider from "react-slick";
-// import { motion } from "framer-motion";
-// import { grey } from "@mui/material/colors";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-
-// // const theme = createTheme({
-// //   palette: {
-// //     primary: { main: "#00A86B" }, // Green brand color
-// //     secondary: { main: "#102A43" }, // Deep navy
-// //     background: { default: "#F9FAFB" },
-// //   },
-// //   typography: {
-// //     fontFamily: "Poppins, sans-serif",
-// //     h4: { fontWeight: 700 },
-// //     h6: { fontWeight: 500 },
-// //   },
-// // });
-
-// const theme = createTheme({
-//   palette: {
-//     primary: { main: "#00A86B" }, // Corporate Green
-//     secondary: { main: "#102A43" }, // Deep Navy
-//     background: { default: "#F9FAFB" },
-//   },
-//   typography: {
-//     fontFamily: "'Manrope', 'Inter', 'Poppins', sans-serif",
-//     h3: {
-//       fontWeight: 700,
-//       letterSpacing: "-0.5px",
-//       lineHeight: 1.2,
-//     },
-//     h4: {
-//       fontWeight: 700,
-//       letterSpacing: "0px",
-//       color: "#102A43",
-//     },
-//     h5: {
-//       fontWeight: 600,
-//       color: "#00A86B",
-//     },
-//     h6: {
-//       fontWeight: 500,
-//       color: "#333",
-//     },
-//     body1: {
-//       fontWeight: 400,
-//       lineHeight: 1.7,
-//       color: "#4A4A4A",
-//     },
-//     button: {
-//       textTransform: "none",
-//       fontWeight: 600,
-//       fontSize: "1rem",
-//       letterSpacing: "0.3px",
-//     },
-//   },
-// });
-
-
-// const Navbar = () => (
-//   <AppBar
-//     position="fixed"
-//     sx={{
-//       backgroundColor: "rgba(255,255,255,0.95)",
-//       backdropFilter: "blur(12px)",
-//       boxShadow: "0 3px 20px rgba(0,0,0,0.1)",
-//       color: theme.palette.secondary.main,
-//     }}
-//   >
-//     <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 8 } }}>
-//       <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: "-0.3px", color: theme.palette.primary.main }}>
-
-//         Orbit Power Engineering
-//       </Typography>
-//       <Box>
-//         {["Home", "Services", "Clients", "Gallery", "Testimonials", "Contact"].map((item) => (
-//           <Button
-//             key={item}
-//             href={`#${item.toLowerCase()}`}
-//              sx={{
-//               color: theme.palette.secondary.main,
-//               fontWeight: 500,
-//               letterSpacing: "0.3px",
-//               textTransform: "none",
-//                mx: 1,
-//               }}
-//           >
-//             {item}
-//           </Button>
-//         ))}
-//       </Box>
-//     </Toolbar>
-//   </AppBar>
-// );
-
-// const Hero = () => (
-//   <Box
-//     id="home"
-//     sx={{
-//       height: "100vh",
-//       display: "flex",
-//       alignItems: "center",
-//       justifyContent: "center",
-//       textAlign: "center",
-//       background:
-//         "linear-gradient(to right, rgba(0,168,107,0.9), rgba(16,42,67,0.85)), url('https://images.unsplash.com/photo-1581090700227-1e37b190418e') center/cover no-repeat",
-//       color: "white",
-//     }}
-//   >
-//     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-//       <Typography variant="h3" gutterBottom sx={{ fontWeight: 800, letterSpacing: "-0.5px" }}>
-//   Powering the Future with Engineering Excellence
-// </Typography>
-//       <Typography variant="h6" sx={{ fontWeight: 400, letterSpacing: "0.5px" }}>
-//   Design • Construction • Innovation
-// </Typography>
-//       <Button variant="contained" color="primary" size="large" sx={{ mt: 4 }}>
-//         Learn More
-//       </Button>
-//     </motion.div>
-//   </Box>
-// );
-
-// const Services = () => {
-//   const sliderRef = useRef(null);
-//   const services = [
-//     {
-//       img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-//       title: "Design Engineering",
-//       desc: "Innovative electrical, civil, and mechanical design services for modern infrastructure.",
-//     },
-//     {
-//       img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-//       title: "Construction",
-//       desc: "Safe, efficient, and quality-driven construction for industrial and commercial projects.",
-//     },
-//     {
-//       img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-//       title: "Procurement & Supply",
-//       desc: "Reliable sourcing and delivery of global engineering and power products.",
-//     },
-//     {
-//       img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-//       title: "Commissioning & Maintenance",
-//       desc: "End-to-end lifecycle support for optimal asset performance.",
-//     },
-//   ];
-
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 700,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     arrows: false,
-//     responsive: [
-//       { breakpoint: 960, settings: { slidesToShow: 2 } },
-//       { breakpoint: 600, settings: { slidesToShow: 1 } },
-//     ],
-//   };
-
-//   return (
-//     <Box id="services" sx={{ py: 10, bgcolor: grey[100] }}>
-//       <Container>
-//         <Typography
-//   variant="h4"
-//   align="center"
-//   gutterBottom
-//   sx={{
-//     color: theme.palette.secondary.main,
-//     fontWeight: 700,
-//     letterSpacing: "-0.3px",
-//   }}
-// >
-
-//           Core Services
-//         </Typography>
-//         <Box position="relative">
-//           <IconButton
-//             onClick={() => sliderRef.current.slickPrev()}
-//             sx={{
-//               position: "absolute",
-//               top: "40%",
-//               left: "-30px",
-//               zIndex: 2,
-//               bgcolor: "white",
-//               boxShadow: 2,
-//               "&:hover": { bgcolor: grey[200] },
-//             }}
-//           >
-//             <ArrowBackIos />
-//           </IconButton>
-//           <IconButton
-//             onClick={() => sliderRef.current.slickNext()}
-//             sx={{
-//               position: "absolute",
-//               top: "40%",
-//               right: "-30px",
-//               zIndex: 2,
-//               bgcolor: "white",
-//               boxShadow: 2,
-//               "&:hover": { bgcolor: grey[200] },
-//             }}
-//           >
-//             <ArrowForwardIos />
-//           </IconButton>
-
-//           <Slider ref={sliderRef} {...settings}>
-//             {services.map((srv, i) => (
-//               <Box key={i} sx={{ px: 2 }}>
-//                 <Card
-//                   sx={{
-//                     borderRadius: 3,
-//                     overflow: "hidden",
-//                     boxShadow: 4,
-//                     "&:hover": { transform: "translateY(-5px)", transition: "0.3s" },
-//                   }}
-//                 >
-//                   <CardMedia component="img" height="220" image={srv.img} alt={srv.title} />
-//                   <CardContent>
-//                     <Typography variant="h6" sx={{ fontWeight: 600, color: theme.palette.primary.main }}>
-
-//                       {srv.title}
-//                     </Typography>
-//                     <Typography color="text.secondary" sx={{ fontWeight: 400, lineHeight: 1.6 }}>
-// {srv.desc}</Typography>
-//                   </CardContent>
-//                 </Card>
-//               </Box>
-//             ))}
-//           </Slider>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// const Gallery = () => {
-//   const sliderRef = useRef(null);
-//   const images = [
-//     "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-//     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
-//     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
-//     "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-//     "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
-//   ];
-
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 700,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     arrows: false,
-//     responsive: [
-//       { breakpoint: 960, settings: { slidesToShow: 2 } },
-//       { breakpoint: 600, settings: { slidesToShow: 1 } },
-//     ],
-//   };
-
-//   return (
-//     <Box id="gallery" sx={{ py: 10 }}>
-//       <Container>
-//         <Typography
-//   variant="h4"
-//   align="center"
-//   gutterBottom
-//   sx={{
-//     color: theme.palette.secondary.main,
-//     fontWeight: 700,
-//     letterSpacing: "-0.3px",
-//   }}
-// >
-
-//           Photo Gallery
-//         </Typography>
-//         <Box position="relative">
-//           <IconButton
-//             onClick={() => sliderRef.current.slickPrev()}
-//             sx={{
-//               position: "absolute",
-//               top: "40%",
-//               left: "-30px",
-//               zIndex: 2,
-//               bgcolor: "white",
-//               boxShadow: 2,
-//               "&:hover": { bgcolor: grey[200] },
-//             }}
-//           >
-//             <ArrowBackIos />
-//           </IconButton>
-//           <IconButton
-//             onClick={() => sliderRef.current.slickNext()}
-//             sx={{
-//               position: "absolute",
-//               top: "40%",
-//               right: "-30px",
-//               zIndex: 2,
-//               bgcolor: "white",
-//               boxShadow: 2,
-//               "&:hover": { bgcolor: grey[200] },
-//             }}
-//           >
-//             <ArrowForwardIos />
-//           </IconButton>
-
-//           <Slider ref={sliderRef} {...settings}>
-//             {images.map((img, i) => (
-//               <Box key={i} sx={{ px: 2 }}>
-//                 <Card sx={{ borderRadius: 3, overflow: "hidden", boxShadow: 4 }}>
-//                   <CardMedia component="img" height="250" image={img} alt={`Gallery ${i}`} />
-//                 </Card>
-//               </Box>
-//             ))}
-//           </Slider>
-//         </Box>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// // const Contact = () => (
-// //   <Box
-// //     id="contact"
-// //     sx={{
-// //       py: 10,
-// //       background: "linear-gradient(135deg, #E8F5E9, #F5F5F5)",
-// //     }}
-// //   >
-// //     <Container>
-// //       <Typography variant="h4" align="center" color="secondary" gutterBottom>
-// //         Contact Us
-// //       </Typography>
-// //       <Typography align="center" sx={{ mb: 4, color: grey[700] }}>
-// //         We'd love to hear from you! Send us a message and our team will get back shortly.
-// //       </Typography>
-
-// //       <Paper
-// //         elevation={4}
-// //         sx={{
-// //           p: 5,
-// //           borderRadius: 4,
-// //           maxWidth: 700,
-// //           mx: "auto",
-// //           background: "white",
-// //           boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-// //         }}
-// //       >
-// //         <Grid container spacing={3}>
-// //           <Grid item xs={12} sm={6}>
-// //             <TextField label="Name" variant="outlined" fullWidth />
-// //           </Grid>
-// //           <Grid item xs={12} sm={6}>
-// //             <TextField label="Email" variant="outlined" fullWidth />
-// //           </Grid>
-// //           <Grid item xs={12}>
-// //             <TextField label="Subject" variant="outlined" fullWidth />
-// //           </Grid>
-// //           <Grid item xs={12}>
-// //             <TextField label="Message" multiline rows={4} variant="outlined" fullWidth />
-// //           </Grid>
-// //           <Grid item xs={12} textAlign="center">
-// //             <Button
-// //               variant="contained"
-// //               color="primary"
-// //               size="large"
-// //               sx={{
-// //                 borderRadius: 3,
-// //                 px: 5,
-// //                 py: 1.5,
-// //                 textTransform: "none",
-// //                 fontSize: "1rem",
-// //                 fontWeight: 600,
-// //               }}
-// //             >
-// //               Send Message
-// //             </Button>
-// //           </Grid>
-// //         </Grid>
-// //       </Paper>
-// //     </Container>
-// //   </Box>
-// // );
-
-
-// const Contact = () => {
-//   return (
-//     <Container sx={{ py: 10 }}>
-//       <Paper
-//         elevation={6}
-//         sx={{
-//           p: 6,
-//           borderRadius: 4,
-//           background: "linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%)",
-//           boxShadow: "0px 4px 20px rgba(0,0,0,0.1)",
-//         }}
-//       >
-//         <Typography  variant="h4"   textAlign="center" gutterBottom  
-//          sx={{ fontWeight: 700, color: "#1B5E20", letterSpacing: "-0.3px" }}
-//         >
-
-//           Get in Touch
-//         </Typography>
-
-//         <Grid container spacing={3} sx={{ mt: 2 }}>
-//           <Grid item xs={12} md={6}>
-//             <TextField
-//               label="Full Name"
-//               fullWidth
-//               variant="outlined"
-//               sx={{ background: "white", borderRadius: 2 }}
-//             />
-//           </Grid>
-
-//           <Grid item xs={12} md={6}>
-//             <TextField
-//               label="Email Address"
-//               fullWidth
-//               variant="outlined"
-//               sx={{ background: "white", borderRadius: 2 }}
-//             />
-//           </Grid>
-
-//           <Grid item xs={12} md={6}>
-//             <TextField
-//               label="Phone Number"
-//               fullWidth
-//               variant="outlined"
-//               sx={{ background: "white", borderRadius: 2 }}
-//             />
-//           </Grid>
-
-//           <Grid item xs={12} md={6}>
-//             <TextField
-//               label="Company Name"
-//               fullWidth
-//               variant="outlined"
-//               sx={{ background: "white", borderRadius: 2 }}
-//             />
-//           </Grid>
-
-//           <Grid item xs={12}>
-//             <TextField
-//               label="Message"
-//               multiline
-//               rows={4}
-//               fullWidth
-//               variant="outlined"
-//               sx={{ background: "white", borderRadius: 2 }}
-//             />
-//           </Grid>
-
-//           <Grid item xs={12} textAlign="center">
-//             <Button
-//               variant="contained"
-//               size="large"
-//               sx={{
-//                 px: 6,
-//                 py: 1.5,
-//                 backgroundColor: "#1B5E20",
-//                 "&:hover": { backgroundColor: "#2E7D32" },
-//                 borderRadius: 3,
-//               }}
-//             >
-//               Submit Message
-//             </Button>
-//           </Grid>
-//         </Grid>
-//       </Paper>
-//     </Container>
-//   );
-// };
-
-// const Footer = () => (
-//   <Box sx={{ bgcolor: "#102A43", color: "white", textAlign: "center", py: 3 }}>
-//     <Typography variant="body2">
-//       © {new Date().getFullYear()} Orbit Power Engineering | All Rights Reserved
-//     </Typography>
-//   </Box>
-// );
-
-// const App = () => (
-//   <ThemeProvider theme={theme}>
-//     <CssBaseline />
-//     <Navbar />
-//     <Hero />
-//     <Services />
-//     <Gallery />
-//     <Contact />
-//     <Footer />
-//   </ThemeProvider>
-// );
-
-// export default App;
-
-
-
-
-
-
-//final
 import React, { useRef, useState } from "react";
 import {
   AppBar,
@@ -534,13 +13,19 @@ import {
   Grid,
   Paper,
   TextField,
+  Snackbar,
+  Alert,
   IconButton,
   Drawer,
   List,
   ListItemButton,
   ListItemText,
   Divider,
+
 } from "@mui/material";
+
+import { useTheme, useMediaQuery } from "@mui/material";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -549,6 +34,19 @@ import { motion } from "framer-motion";
 import { grey } from "@mui/material/colors";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+//contact
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+
+
+//footer
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+
 
 // -------------------- THEME --------------------
 const theme = createTheme({
@@ -575,7 +73,25 @@ const theme = createTheme({
 // -------------------- NAVBAR --------------------
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const links = ["Home", "Services", "Clients", "Gallery", "Testimonials", "Contact"];
+  // const links = ["Home", "Services", "Clients", "Gallery", "Testimonials", "Contact"];
+  const links = ["Home", "Services", "Clients", "Gallery", "Contact"];
+
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (!el) {
+      window.location.hash = id;
+      return;
+    }
+
+    // Compute offset so the section isn't hidden behind the fixed AppBar.
+    // Use an estimated AppBar height (can be adjusted) or measure the toolbar if present.
+    const toolbar = document.querySelector('.MuiToolbar-root');
+    const appBarHeight = toolbar ? toolbar.offsetHeight : 72; // fallback to 72px
+
+    const top = window.pageYOffset + el.getBoundingClientRect().top - appBarHeight - 8; // small extra gap
+
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -602,6 +118,10 @@ const Navbar = () => {
               <Button
                 key={item}
                 href={`#${item.toLowerCase()}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId(item.toLowerCase());
+                }}
                 sx={{
                   color: theme.palette.secondary.main,
                   fontWeight: 500,
@@ -632,14 +152,14 @@ const Navbar = () => {
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Box sx={{ width: 260 }} role="presentation" onClick={() => setOpen(false)} onKeyDown={() => setOpen(false)}>
           <List>
-            <ListItemButton component="a" href="#home">
+            <ListItemButton onClick={() => { scrollToId('home'); setOpen(false); }}>
               <ListItemText primary="Orbit Power Engineering" />
             </ListItemButton>
           </List>
           <Divider />
           <List>
             {links.map((item) => (
-              <ListItemButton key={item} component="a" href={`#${item.toLowerCase()}`}>
+              <ListItemButton key={item} onClick={() => { scrollToId(item.toLowerCase()); setOpen(false); }}>
                 <ListItemText primary={item} />
               </ListItemButton>
             ))}
@@ -681,6 +201,11 @@ const Hero = () => (
         color="primary"
         size="large"
         sx={{ mt: 4, px: 6, py: 1.5, borderRadius: 3 }}
+        onClick={() => {
+          const el = document.getElementById("contact");
+          if (el && el.scrollIntoView) el.scrollIntoView({ behavior: "smooth" });
+        }}
+        aria-label="Learn more — scroll to contact"
       >
         Learn More
       </Button>
@@ -693,22 +218,22 @@ const Services = () => {
   const sliderRef = useRef(null);
   const services = [
     {
-      img: "https://images.unsplash.com/photo-1581091215367-59ab6b31f6b2",
+      img: "/images/design_engineering.jpg",
       title: "Design Engineering",
       desc: "Innovative electrical, civil, and mechanical design solutions for the future.",
     },
     {
-      img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
+      img: "/images/construction.webp",
       title: "Construction",
-      desc: "Safe, efficient, and quality-driven construction for industries and infrastructure.",
+      desc: "Safe, efficient, and quality-driven construction.",
     },
     {
-      img: "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
+      img: "/images/procurement.webp",
       title: "Procurement & Supply",
       desc: "Global sourcing and logistics solutions for critical engineering materials.",
     },
     {
-      img: "https://images.unsplash.com/photo-1567789884554-0b844b597180",
+      img: "/images/commissioning.webp",
       title: "Commissioning & Maintenance",
       desc: "Comprehensive lifecycle support for high-performance systems.",
     },
@@ -789,10 +314,12 @@ const navBtnStyle = (side) => ({
 const Gallery = () => {
   const sliderRef = useRef(null);
   const images = [
-    "https://images.unsplash.com/photo-1603791452906-b6b5d8e3d37a",
-    "https://images.unsplash.com/photo-1591696205602-2f950c417cb9",
-    "https://images.unsplash.com/photo-1567789884554-0b844b597180",
-    "https://images.unsplash.com/photo-1581090700227-1e37b190418e",
+    "/images/gallery/1.jpg",
+    "/images/gallery/2.jpg",
+    "/images/gallery/3.jpg",
+    "/images/gallery/4.jpg",
+    "/images/gallery/5.webp",
+    "/images/gallery/6.avif",
   ];
 
   const settings = {
@@ -851,11 +378,13 @@ const Clients = () => (
       </Typography>
       <Grid container spacing={4} justifyContent="center" sx={{ mt: 3 }}>
         {[
-          "/logos/adani.png",
-          "/logos/tata.png",
-          "/logos/siemens.png",
-          "/logos/lt.png",
-          "/logos/reliance.png",
+          "/images/logo/l1.webp",
+          "/images/logo/l2.svg",
+          "/images/logo/l3.jpg",
+          "/images/logo/l4.jpg",
+          "/images/logo/l5.png",
+          "/images/logo/l6.webp",
+          "/images/logo/l7.png",
         ].map((logo, i) => (
           <Grid item key={i}>
             <Paper sx={{ p: 2, borderRadius: 2, boxShadow: 3 }}>
@@ -868,106 +397,444 @@ const Clients = () => (
   </Box>
 );
 
-const Testimonials = () => (
-  <Box id="testimonials" sx={{ py: 10, bgcolor: grey[100] }}>
-    <Container>
-      <Typography variant="h4" align="center" gutterBottom color="secondary">
-        Client Testimonials
-      </Typography>
-      <Grid container spacing={4} sx={{ mt: 3 }}>
-        {["certificate1.png", "certificate2.png"].map((doc, i) => (
-          <Grid item xs={12} md={6} key={i}>
-            <Paper sx={{ borderRadius: 3, overflow: "hidden", boxShadow: 4 }}>
-              <img src={`/docs/${doc}`} alt="testimonial" width="100%" />
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
-  </Box>
-);
+// const Testimonials = () => (
+//   <Box id="testimonials" sx={{ py: 10, bgcolor: grey[100] }}>
+//     <Container>
+//       <Typography variant="h4" align="center" gutterBottom color="secondary">
+//         Client Testimonials
+//       </Typography>
+//       <Grid container spacing={4} sx={{ mt: 3 }}>
+//         {["certificate1.png", "certificate2.png"].map((doc, i) => (
+//           <Grid item xs={12} md={6} key={i}>
+//             <Paper sx={{ borderRadius: 3, overflow: "hidden", boxShadow: 4 }}>
+//               <img src="logo512.png" alt="testimonial" width="100%" />
+//             </Paper>
+//           </Grid>
+//         ))}
+//       </Grid>
+//     </Container>
+//   </Box>
+// );
 
 // -------------------- CONTACT --------------------
-const Contact = () => (
-  <Box id="contact" sx={{ py: 10, backgroundColor: "#F8FFF9" }}>
-    <Container>
-      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}>
-        <Typography variant="h4" textAlign="center" gutterBottom>
-          Get in Touch
-        </Typography>
-        <Typography align="center" sx={{ mb: 6, color: grey[700] }}>
-          We’d love to hear from you. Let’s power up your next project together.
-        </Typography>
-      </motion.div>
 
+
+
+
+const Contact = () => {
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const [submitted, setSubmitted] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you could send the form data to an API
+    setSubmitted(true);
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackbar = (_, reason) => {
+    if (reason === "clickaway") return;
+    setOpenSnackbar(false);
+  };
+
+  return (
+    <>
+    <Box id="contact"
+      sx={{
+        backgroundColor: "background.default",
+        py: 8,
+        px: { xs: 2, md: 6 },
+        display: "flex",
+        flexDirection: isSmall ? "column" : "row",
+        justifyContent: "center",
+        alignItems: "stretch",
+        gap: 4,
+      }}
+    >
+      {/* 1️⃣ LEFT — Get in Touch Section */}
+      <Box sx={{ flex: 1, minWidth: 300 }}>
+        <Typography
+          variant="overline"
+          color="primary"
+          fontWeight={700}
+          letterSpacing={1}
+        >
+          CONTACT US
+        </Typography>
+
+        <Typography
+          variant="h4"
+          sx={{
+            mt: 1,
+            mb: 2,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            color: "text.primary",
+          }}
+        >
+          Get in Touch With Us
+        </Typography>
+
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+          We’d love to hear from you! Whether you have a question about our
+          services, need help, or just want to say hello — our team is ready to
+          assist you.
+        </Typography>
+
+        {/* Contact Info */}
+        <Box display="flex" alignItems="center" mb={3}>
+          <IconButton
+            sx={{
+              mr: 2,
+              bgcolor: "primary.main",
+              color: "#fff",
+              "&:hover": { bgcolor: "primary.dark" },
+            }}
+          >
+            <LocationOnIcon />
+          </IconButton>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+              Our Location
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              gomtinagar, lucknow, uttarpradesh, india
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box display="flex" alignItems="center" mb={3}>
+          <IconButton
+            sx={{
+              mr: 2,
+              bgcolor: "primary.main",
+              color: "#fff",
+              "&:hover": { bgcolor: "primary.dark" },
+            }}
+          >
+            <PhoneIcon />
+          </IconButton>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+              Phone Number
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              +91 8115108051
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box display="flex" alignItems="center">
+          <IconButton
+            sx={{
+              mr: 2,
+              bgcolor: "primary.main",
+              color: "#fff",
+              "&:hover": { bgcolor: "primary.dark" },
+            }}
+          >
+            <EmailIcon />
+          </IconButton>
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+              Email Address
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              orbitenginer@gmail.com
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* 2️⃣ MIDDLE — Contact Form */}
       <Paper
-        elevation={8}
+        elevation={5}
         sx={{
-          p: 6,
-          borderRadius: 4,
-          background: "white",
-          boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
-          maxWidth: 900,
-          mx: "auto",
+          flex: 1,
+          minWidth: 320,
+          borderRadius: 3,
+          p: { xs: 3, sm: 4 },
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
       >
-        <Grid container spacing={3}>
-          {[
-            { label: "Full Name" },
-            { label: "Email Address" },
-            { label: "Phone Number" },
-            { label: "Company Name" },
-          ].map((field, i) => (
-            <Grid key={i} item xs={12} md={6}>
-              <TextField
-                label={field.label}
-                fullWidth
-                variant="outlined"
-                sx={{ background: "#F9FAFB", borderRadius: 2 }}
-              />
-            </Grid>
-          ))}
-          <Grid item xs={12}>
-            <TextField
-              label="Message"
-              multiline
-              rows={4}
-              fullWidth
-              variant="outlined"
-              sx={{ background: "#F9FAFB", borderRadius: 2 }}
-            />
-          </Grid>
-          <Grid item xs={12} textAlign="center">
-            <Button
-              variant="contained"
-              size="large"
+        <Typography
+          variant="h5"
+          color="primary"
+          fontWeight={700}
+          sx={{ mb: 3 }}
+        >
+          Send us a message
+        </Typography>
+
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Your Name"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            label="Your Email"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            label="Your Phone"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            label="Your Message"
+            fullWidth
+            multiline
+            rows={5}
+            margin="normal"
+            variant="outlined"
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              mt: 3,
+              py: 1.4,
+              fontWeight: 600,
+            }}
+          >
+            Send Message
+          </Button>
+          {submitted && (
+            <Typography variant="body2" color="primary" sx={{ mt: 2 }}>
+              Thanks — we'll contact you shortly.
+            </Typography>
+          )}
+        </form>
+      </Paper>
+
+      {/* 3️⃣ RIGHT — Google Map */}
+      {/* <Paper
+        elevation={4}
+        sx={{
+          flex: 1,
+          minWidth: 300,
+          borderRadius: 3,
+          overflow: "hidden",
+          height: isSmall ? 300 : "auto",
+        }}
+      >
+        <iframe
+          title="Google Map - Gomtinagar, Lucknow"
+          src="https://maps.google.com/maps?q=Gomtinagar%20Lucknow%20Uttar%20Pradesh%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </Paper> */}
+    </Box>
+    <Snackbar open={openSnackbar} autoHideDuration={4000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+      <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+        Thanks — we'll contact you shortly.
+      </Alert>
+    </Snackbar>
+    </>
+  );
+};
+// -------------------- FOOTER --------------------
+
+//final footer
+
+const Footer = () => {
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+
+  return (
+    <Box
+      sx={{
+        background: "linear-gradient(180deg, #0b0c2a 0%, #06061a 100%)",
+        color: "#fff",
+        borderTop: "1px solid rgba(255,255,255,0.1)",
+        mt: 8,
+      }}
+    >
+      {/* Main Footer */}
+      <Box sx={{ px: { xs: 3, md: 10 }, py: { xs: 4, md: 5 } }}>
+        <Grid
+          container
+          spacing={4}
+          alignItems="flex-start"
+          justifyContent="space-between"
+          direction={isSmall ? "column" : "row"}
+        >
+          {/* LEFT SECTION: Company Info */}
+          <Grid item xs={12} md={5}>
+            <Typography
+              variant="h5"
+              fontWeight={700}
               sx={{
-                px: 6,
-                py: 1.5,
-                backgroundColor: "#00A86B",
-                "&:hover": { backgroundColor: "#02935F" },
-                borderRadius: 3,
-                mt: 2,
+                mb: 1,
+                color: "primary.main",
+                letterSpacing: 0.5,
               }}
             >
-              Submit Message
-            </Button>
+              Orbit Engineering
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "rgba(255,255,255,0.75)",
+                mb: 2,
+                lineHeight: 1.7,
+                maxWidth: 360,
+              }}
+            >
+              Empowering innovation through technology. We build scalable,
+              secure, and future-ready digital solutions that transform
+              businesses and accelerate growth.
+            </Typography>
+
+            {/* Social Icons */}
+            <Box sx={{ display: "flex", gap: 1 }}>
+              {[FacebookIcon, TwitterIcon, LinkedInIcon, InstagramIcon].map(
+                (Icon, i) => (
+                  <IconButton
+                    key={i}
+                    sx={{
+                      color: "#fff",
+                      bgcolor: "rgba(255,255,255,0.1)",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      "&:hover": {
+                        bgcolor: "primary.main",
+                        transform: "translateY(-2px)",
+                        transition: "all 0.3s ease",
+                      },
+                      width: 38,
+                      height: 38,
+                    }}
+                  >
+                    <Icon fontSize="small" />
+                  </IconButton>
+                )
+              )}
+            </Box>
+          </Grid>
+
+          {/* RIGHT SECTION: Contact Info + Map Side by Side */}
+          <Grid item xs={12} md={7}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: isSmall ? "column" : "row",
+                alignItems: "stretch",
+                justifyContent: "space-between",
+                gap: 2,
+              }}
+            >
+              {/* Contact Info */}
+              <Box sx={{ flex: 1 }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    mb: 1.5,
+                    fontWeight: 600,
+                    color: "primary.main",
+                    textTransform: "uppercase",
+                    letterSpacing: 0.5,
+                  }}
+                >
+                  Contact Us
+                </Typography>
+
+                <Box display="flex" alignItems="center" mb={1.2}>
+                  <LocationOnIcon sx={{ mr: 1, color: "primary.main" }} />
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "rgba(255,255,255,0.75)" }}
+                  >
+                    Gomtinagar, Lucknow, Uttar Pradesh, India
+                  </Typography>
+                </Box>
+
+                <Box display="flex" alignItems="center" mb={1.2}>
+                  <PhoneIcon sx={{ mr: 1, color: "primary.main" }} />
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "rgba(255,255,255,0.75)" }}
+                  >
+                    +91 8115108051
+                  </Typography>
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <EmailIcon sx={{ mr: 1, color: "primary.main" }} />
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "rgba(255,255,255,0.75)" }}
+                  >
+                    orbitenginer@gmail.com
+                  </Typography>
+                </Box>
+              </Box>
+
+              {/* Map Box */}
+              <Box
+                sx={{
+                  flex: 1.2,
+                  borderRadius: 3,
+                  overflow: "hidden",
+                  height: isSmall ? 200 : 160,
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    boxShadow: "0 6px 16px rgba(0,0,0,0.6)",
+                    transform: "translateY(-2px)",
+                  },
+                }}
+              >
+                <iframe
+                  title="Company Map - Gomtinagar, Lucknow"
+                  src="https://maps.google.com/maps?q=Gomtinagar%20Lucknow%20Uttar%20Pradesh%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </Box>
+            </Box>
           </Grid>
         </Grid>
-      </Paper>
-    </Container>
-  </Box>
-);
+      </Box>
 
-// -------------------- FOOTER --------------------
-const Footer = () => (
-  <Box sx={{ bgcolor: "#102A43", color: "white", textAlign: "center", py: 3 }}>
-    <Typography variant="body2">
-      © {new Date().getFullYear()} Orbit Power Engineering | All Rights Reserved
-    </Typography>
-  </Box>
-);
+      {/* Divider */}
+      <Divider sx={{ bgcolor: "rgba(255,255,255,0.15)" }} />
 
+      {/* Bottom Bar */}
+      <Box
+        sx={{
+          textAlign: "center",
+          py: 2,
+          backgroundColor: "#06061a",
+          color: "rgba(255,255,255,0.6)",
+          fontSize: "0.85rem",
+          letterSpacing: 0.3,
+        }}
+      >
+        © 2025 | Orbit Engineering | All rights reserved.
+      </Box>
+    </Box>
+  );
+};
 // -------------------- APP --------------------
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -977,7 +844,7 @@ const App = () => (
     <Services />
     <Gallery />
     <Clients/>
-    <Testimonials/>
+    {/* <Testimonials/> */}
     <Contact />
     <Footer />
   </ThemeProvider>
