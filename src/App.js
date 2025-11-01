@@ -214,91 +214,101 @@ const Hero = () => (
 );
 
 // -------------------- SERVICES --------------------
+
+const servicesData = [
+  {
+    title: "Design Engineering",
+    image: "/images/design_engineering.jpg",
+    description:
+      "Innovative electrical, civil, and mechanical design solutions for the future.",
+  },
+  {
+    title: "Construction",
+    image: "/images/construction.webp",
+    description: "Safe, efficient, and quality-driven construction services.",
+  },
+  {
+    title: "Procurement & Supply",
+    image: "/images/procurement.webp",
+    description:
+      "Global sourcing and logistics solutions for critical engineering materials.",
+  },
+    {
+    title: "Consulting",
+    image: "/images/commissioning.webp",
+    description: "Expert engineering consultation and feasibility analysis.",
+  },
+];
+
+
 const Services = () => {
-  const sliderRef = useRef(null);
-  const services = [
-    {
-      img: "/images/design_engineering.jpg",
-      title: "Design Engineering",
-      desc: "Innovative electrical, civil, and mechanical design solutions for the future.",
-    },
-    {
-      img: "/images/construction.webp",
-      title: "Construction",
-      desc: "Safe, efficient, and quality-driven construction.",
-    },
-    {
-      img: "/images/procurement.webp",
-      title: "Procurement & Supply",
-      desc: "Global sourcing and logistics solutions for critical engineering materials.",
-    },
-    {
-      img: "/images/commissioning.webp",
-      title: "Commissioning & Maintenance",
-      desc: "Comprehensive lifecycle support for high-performance systems.",
-    },
-  ];
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    responsive: [
-      { breakpoint: 960, settings: { slidesToShow: 2 } },
-      { breakpoint: 600, settings: { slidesToShow: 1 } },
-    ],
-  };
-
   return (
-    <Box id="services" sx={{ py: 10, bgcolor: grey[100] }}>
+    <Box id="services" sx={{ py: 10, backgroundColor: "#f7f9fb" }}>
       <Container>
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography
+          variant="h4"
+          align="center"
+          fontWeight={700}
+          mb={6}
+          sx={{ color: "#1a1a1a" }}
+        >
           Core Services
         </Typography>
-        <Box position="relative">
-          <IconButton
-            onClick={() => sliderRef.current.slickPrev()}
-            sx={navBtnStyle("left")}
-          >
-            <ArrowBackIos />
-          </IconButton>
-          <IconButton
-            onClick={() => sliderRef.current.slickNext()}
-            sx={navBtnStyle("right")}
-          >
-            <ArrowForwardIos />
-          </IconButton>
 
-          <Slider ref={sliderRef} {...settings}>
-            {services.map((srv, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 200 }}
+        <Grid container spacing={4} justifyContent="center">
+          {servicesData.map((service, index) => (
+            <Grid
+              key={index}
+              size={{ xs: 12, sm: 6, md: 3 }} // ✅ MUI v6 syntax
+              display="flex"
+              justifyContent="center"
+            >
+              <Card
+                sx={{
+                  width: "100%",
+                  maxWidth: 320,
+                  borderRadius: 3,
+                  overflow: "hidden",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+                  },
+                }}
               >
-                <Box sx={{ px: 2 }}>
-                  <Card sx={{ borderRadius: 3, overflow: "hidden", boxShadow: 4 }}>
-                    <CardMedia component="img" height="220" image={srv.img} alt={srv.title} />
-                    <CardContent>
-                      <Typography variant="h6" color="primary" gutterBottom>
-                        {srv.title}
-                      </Typography>
-                      <Typography variant="body1">{srv.desc}</Typography>
-                    </CardContent>
-                  </Card>
-                </Box>
-              </motion.div>
-            ))}
-          </Slider>
-        </Box>
+                <CardMedia
+                  component="img"
+                  src={service.image}
+                  alt={service.title}
+                  sx={{
+                    height: 200,
+                    width: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                />
+                <CardContent sx={{ textAlign: "center", p: 3 }}>
+                  <Typography
+                    variant="h6"
+                    fontWeight={600}
+                    gutterBottom
+                    color="primary"
+                  >
+                    {service.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {service.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </Box>
   );
-};
-
+}
 // Helper for nav buttons
 const navBtnStyle = (side) => ({
   position: "absolute",
@@ -311,6 +321,7 @@ const navBtnStyle = (side) => ({
 });
 
 // -------------------- GALLERY --------------------
+
 const Gallery = () => {
   const sliderRef = useRef(null);
   const images = [
@@ -329,6 +340,8 @@ const Gallery = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2500,
     responsive: [
       { breakpoint: 960, settings: { slidesToShow: 2 } },
       { breakpoint: 600, settings: { slidesToShow: 1 } },
@@ -336,16 +349,31 @@ const Gallery = () => {
   };
 
   return (
-    <Box id="gallery" sx={{ py: 10 }}>
+    <Box id="gallery" sx={{ py: 10, bgcolor: "#F9F9F9" }}>
       <Container>
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography
+          variant="h4"
+          align="center"
+          color="secondary"
+          gutterBottom
+          sx={{ fontWeight: 600 }}
+        >
           Photo Gallery
         </Typography>
-        <Box position="relative">
-          <IconButton onClick={() => sliderRef.current.slickPrev()} sx={navBtnStyle("left")}>
+
+        <Box position="relative" sx={{ mt: 5 }}>
+          {/* Navigation Buttons */}
+          <IconButton
+            onClick={() => sliderRef.current.slickPrev()}
+            sx={navBtnStyle("left")}
+          >
             <ArrowBackIos />
           </IconButton>
-          <IconButton onClick={() => sliderRef.current.slickNext()} sx={navBtnStyle("right")}>
+
+          <IconButton
+            onClick={() => sliderRef.current.slickNext()}
+            sx={navBtnStyle("right")}
+          >
             <ArrowForwardIos />
           </IconButton>
 
@@ -353,12 +381,42 @@ const Gallery = () => {
             {images.map((img, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
-                <Box sx={{ px: 2 }}>
-                  <Card sx={{ borderRadius: 3, overflow: "hidden", boxShadow: 4 }}>
-                    <CardMedia component="img" height="250" image={img} alt={`Gallery ${i}`} />
+                <Box
+                  sx={{
+                    px: { xs: 1, sm: 2 },
+                    py: { xs: 1, sm: 2 },
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Card
+                    sx={{
+                      width: "100%",
+                      maxWidth: 400,
+                      borderRadius: 3,
+                      overflow: "hidden",
+                      boxShadow: 4,
+                      aspectRatio: "4 / 3", // ✅ Maintains image ratio across all devices
+                      bgcolor: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={img}
+                      alt={`Gallery ${i}`}
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                      }}
+                    />
                   </Card>
                 </Box>
               </motion.div>
@@ -369,6 +427,7 @@ const Gallery = () => {
     </Box>
   );
 };
+
 
 const Clients = () => (
   <Box id="clients" sx={{ py: 10, bgcolor: "#E8F5E9" }}>
